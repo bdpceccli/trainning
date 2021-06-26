@@ -1,0 +1,23 @@
+
+version: '3.7'
+
+services:
+    db:
+        image: mariadb:latest
+        container_name: db_c
+        restart: always
+        volumes:
+            - db-volume:/var/lib/mysql
+            - .mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+        environment:
+            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+
+
+volumes:
+        db-volume:
+
+
+
