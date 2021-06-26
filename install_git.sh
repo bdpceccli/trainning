@@ -35,3 +35,10 @@ git config --global init.defaultBranch main
 echo "La configuration appliquée est :"
 echo $(git config --list)
 
+# configuration github
+ssh-keygen -t ed25519 -C $email
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+echo "ajoutez le fichier ~/.ssh.id_ed25519.pud dans github"
+echo "testez avec la commande: ssh -T git@github.com"
+
