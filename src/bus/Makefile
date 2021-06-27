@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall
-LDFLAGS=
+LDFLAGS=-lmosquitto
 EXEC=bus
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
@@ -20,4 +20,6 @@ clean:
 mrproper:
 	rm -f $(EXEC)
 
+install:
+	cp $(EXEC) ../../apps/bus/
 
