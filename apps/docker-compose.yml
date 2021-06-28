@@ -1,0 +1,42 @@
+
+version: '3.7'
+
+services:
+    db:
+        image: mariadb:latest
+        container_name: db_c
+        restart: always
+        volumes:
+            - db-volume:/var/lib/mysql
+            - .mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+        environment:
+            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        ports:
+                - 3306:3306
+
+    adminer:
+            image: adminer
+            restart: always
+            ports:
+                    - 8080:8080
+
+
+    mqtt:
+            image: eclipse-mosquitto:latest
+            container_name: mqtt_c
+            restart: always
+            ports:
+                    - 1883:1883
+                    - 9001:9001
+            volumes:
+                    - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+
+volumes:
+        db-volume:
+
+
+
