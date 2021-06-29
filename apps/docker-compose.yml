@@ -35,6 +35,24 @@ services:
                     - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
 
+    bus1:
+            image: bussimu:latest
+            container_name: bus1_c
+            restart: always
+            environment:
+                    BUSID: 1
+            depends_on:
+                    - mqtt
+
+    saphir:
+            image: saphir:latest
+            container_name: saphir_c
+            retart: always
+            depends_on:
+                    - mqtt
+                    - db
+
+
 volumes:
         db-volume:
 

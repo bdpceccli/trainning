@@ -127,10 +127,17 @@ int mqtt_send(struct mosquitto *m, char *topic, char *msg){
  */
 void decode_commandline(int argc, char *argv[], int *id, char *host) {
 	int opt;
+	int i=0;
+
+	for(i=0; i<argc; i++) {
+		fprintf(stderr, "%s ", argv[i]);
+	}
+	fprintf(stderr, "\n");
 	
+
 	if (argc < 5) {
-		fprintf(stderr, "Usage %s -i busid -h mqtthost\n", argv[0]);
-        exit(EXIT_FAILURE);
+		fprintf(stderr, "Nb args Usage %s -i busid -h mqtthost\n", argv[0]);
+        	exit(EXIT_FAILURE);
 	}
 	
 	while ((opt = getopt(argc, argv, "i:h:")) != -1) {
@@ -142,7 +149,7 @@ void decode_commandline(int argc, char *argv[], int *id, char *host) {
 				strcpy(host, optarg);
 				break;
 			default:
-				fprintf(stderr, "Usage %s -i busid -h mqtthost\n", argv[0]);
+				fprintf(stderr, "Unknow arg Usage %s -i busid -h mqtthost\n", argv[0]);
 				exit(EXIT_FAILURE);
 		}
 	}
