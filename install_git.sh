@@ -39,6 +39,6 @@ echo $(git config --list)
 ssh-keygen -t ed25519 -C $email
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
-echo "ajoutez le fichier ~/.ssh.id_ed25519.pud dans github"
+echo "ajoutez le fichier ~/.ssh/id_ed25519.pub dans github"
 echo "testez avec la commande: ssh -T git@github.com"
 
