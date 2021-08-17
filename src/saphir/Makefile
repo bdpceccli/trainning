@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall
-LDFLAGS=
+LDFLAGS= -lmosquitto -lmysqlclient
 EXEC=saphir
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
